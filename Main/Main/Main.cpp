@@ -1,7 +1,13 @@
-#include"Functions.h"
+﻿#include"Functions.h"
 
 void instruct() {
-
+	cout << "\n--------------INSTRUCTION--------------\n";
+	cout << "Pattern is: A.exe InputPath N Action OutputPath\n";
+	cout << "in which:\n";
+	cout << "\t∗ A.exe: Your execution '.exe' file.\n";
+	cout << "\t∗ InputPath : Path to the 'input.txt' file.\n";
+	cout << "\t∗ N : an integer, represent the number of expressions from the 'input.txt' file.\n";
+	cout << "\t∗ Action : • - c : calculate the identified the expressions.\n";
 }
 vector<string> readFile(string path,int n) {
 	vector<string> v;
@@ -17,9 +23,18 @@ vector<string> readFile(string path,int n) {
 	file.close();
 	return v;
 }
+void writeFile(vector<string> output, string path) {
+	fstream file;
+	file.open(path, ios::out);
+	while (!output.empty()) {
+		file << output.back() << endl;
+		output.pop_back();
+	}
+	file.close();
+}
 int main(int argc, char* argv[])
 {
-	/*if (argc != 5) {
+	if (argc != 5) {
 		cout << "Fail" << endl;
 		instruct();
 		return 0;
@@ -29,17 +44,19 @@ int main(int argc, char* argv[])
 		instruct();
 		return 0;
 	}
-	vector<string> exp = readFile(argv[1], atoi(argv[2]));
-	if (argv[3] == "-c") {
-		
+	vector<string> input = readFile((string)argv[1], atoi(argv[2]));
+	if ((string)argv[3] == "-c") {
+		//Hàm trả về vector các string results
+		cout << "calculate" << endl;
 	}
-	else if (argv[3] == "-t") {
-
-	}*/
-
-	char* s = new char[2]{ '-', 'c'};
-
-	if (s == "-c")
-		cout << 1;
+	else if ((string)argv[3] == "-t") {
+		//Hàm trả về vector các string postfix
+		cout << "convert" << endl;
+	}
+	else {
+		cout << "Fail" << endl;
+		instruct();
+		return 0;
+	}
 	return 0;
 }
