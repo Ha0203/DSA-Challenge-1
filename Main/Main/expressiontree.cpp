@@ -1,4 +1,4 @@
-#include "Header.h"
+#include "Functions.h"
 
 // Implementation
 // Build
@@ -38,7 +38,7 @@ node* buildExpressionTree(string infix) {
     node* tmp, * tmp1, * tmp2;
 
     for (int i = 0; i < infix.size(); i++) {
-        if (infix[i] == '(')
+        if (infix[i] == '(' || infix[i] == '[' || infix[i] == '{')
             strStack.push(infix.substr(i, 1));
         else if (isdigit(infix[i])) {
             int numdigit = 1;
@@ -52,7 +52,7 @@ node* buildExpressionTree(string infix) {
             i = i + numdigit - 1;
         }
         else if (getPriority(infix.substr(i, 1)) > 0) {
-            while (!strStack.empty() && strStack.top() != "(" && infix[i] != '^' && getPriority(strStack.top()) >= getPriority(infix.substr(i, 1))) {
+            while (!strStack.empty() && strStack.top() != "(" && strStack.top() != "[" && strStack.top() != "{" && infix[i] != '^' && getPriority(strStack.top()) >= getPriority(infix.substr(i, 1))) {
                 tmp = createNode(strStack.top());
                 strStack.pop();
                 tmp1 = nodeStack.top();
@@ -65,8 +65,8 @@ node* buildExpressionTree(string infix) {
             }
             strStack.push(infix.substr(i, 1));
         }
-        else if (infix[i] == ')') {
-            while (!strStack.empty() && strStack.top() != "(") {
+        else if (infix[i] == ')' || infix[i] == ']' || infix[i] == '}') {
+            while (!strStack.empty() && strStack.top() != "(" && strStack.top() != "[" && strStack.top() != "{") {
                 tmp = createNode(strStack.top());
                 strStack.pop();
                 tmp1 = nodeStack.top();

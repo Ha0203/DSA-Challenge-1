@@ -3,6 +3,8 @@
 #include <string>
 #include <stack>
 #include <iostream>
+#include <vector>
+#include <fstream>
 using namespace std;
 
 struct node
@@ -16,3 +18,4 @@ struct node
 node* buildExpressionTree(string infix);
 void printTree(node* root);
 void removeTree(node*& root);
+bool checkInfix(string infix);
