@@ -78,7 +78,7 @@ bool writeFile(vector<RESULT> result, string path, string mode)
 			}
 			else 
 			{
-				file << i.Result;
+				file << fixed << setprecision(2) << i.Result ;
 			}
 		}
 	}

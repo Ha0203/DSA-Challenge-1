@@ -6,6 +6,7 @@
 #include <vector>
 #include <fstream>
 #include <math.h>
+#include <iomanip>
 
 using namespace std;
 
@@ -26,7 +27,7 @@ struct RESULT
     string Postfix = "";
 
     bool PostOrder();
-    int Calculate(node* root);
+    float Calculate(node* root);
 };
 
 // Function List

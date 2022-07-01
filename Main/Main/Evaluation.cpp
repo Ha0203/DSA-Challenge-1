@@ -36,7 +36,7 @@ bool RESULT::PostOrder()
     return true;
  }
 
-int RESULT::Calculate(node* root)
+float RESULT::Calculate(node* root)
  {
     if(!root) 
     {
