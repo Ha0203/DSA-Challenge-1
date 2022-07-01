@@ -5,17 +5,33 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
+#include <math.h>
+
 using namespace std;
 
 struct node
 {
     string data;
-    node* left;
-    node* right;
+    node* left = nullptr;
+    node* right = nullptr;
+    bool IsLeaf();
+};
+
+struct RESULT
+{
+    node* Tree = nullptr;
+    float Result = 0;
+    char Error = 'E';
+    bool ErrorFlag = false;
+    string Postfix = "";
+
+    bool PostOrder();
+    int Calculate(node* root);
 };
 
 // Function List
 node* buildExpressionTree(string infix);
 void printTree(node* root);
 void removeTree(node*& root);
-bool checkInfix(string infix);
+bool checkInfix(string infix); 
+float Process(string operand, float op1, float op2);

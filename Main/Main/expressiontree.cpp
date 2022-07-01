@@ -110,4 +110,5 @@ void removeTree(node*& root) {
     removeTree(root->left);
     removeTree(root->right);
     delete root;
+    root = NULL;
 }
