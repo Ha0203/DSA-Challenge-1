@@ -7,7 +7,6 @@ bool RESULT::PostOrder()
         return false;
     }
     stack<node*> first;
-    stack<node*> second;
 
     first.push(Tree);
     node* left = nullptr;
@@ -17,20 +16,14 @@ bool RESULT::PostOrder()
     {
         left = first.top()->left;
         right = first.top()->right;
-        second.push(first.top());
+        Postfix = first.top()->data + Postfix;
         first.pop();
         if(left)
             first.push(left);
         if(right)
             first.push(right);
-    }
-
-    while(!second.empty())
-    {
-        Postfix += second.top()->data;
-        second.pop();
-        if(!second.empty())
-            Postfix += " ";
+        if(!first.empty())
+            Postfix = " " + Postfix;
     }
 
     return true;

@@ -2,3 +2,4 @@
 Debug
 *.exe
 *.txt
+.vscode/settings.json
