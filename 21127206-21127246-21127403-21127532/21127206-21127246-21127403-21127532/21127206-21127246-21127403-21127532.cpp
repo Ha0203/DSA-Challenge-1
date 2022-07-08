@@ -100,10 +100,12 @@ void instruct() {
 	cout << "\n--------------INSTRUCTION--------------\n";
 	cout << "Pattern is: A.exe InputPath N Action OutputPath\n";
 	cout << "in which:\n";
-	cout << "\t∗ A.exe: Your execution '.exe' file.\n";
-	cout << "\t∗ InputPath : Path to the 'input.txt' file.\n";
-	cout << "\t∗ N : an integer, represent the number of expressions from the 'input.txt' file.\n";
-	cout << "\t∗ Action : • - c : calculate the identified the expressions.\n";
+	cout << "\t A.exe: Your execution '.exe' file.\n";
+	cout << "\t InputPath : Path to the 'input.txt' file.\n";
+	cout << "\t N : an integer, represent the number of expressions from the 'input.txt' file.\n";
+	cout << "\t Action : -c: calculate the identified the expressions.\n";
+	cout << "\t          -t: convert the identified the expressions into postfix expressions.\n";
+	cout << "\t OutputPath: Path to the 'output.txt' file.\n";
 }
 
 vector<string> readFile(string path, int n) {
@@ -120,18 +122,6 @@ vector<string> readFile(string path, int n) {
 	file.close();
 	return v;
 }
-
-//bool writeFile(vector<string> output, string path) {
-//	fstream file;
-//	file.open(path, ios::out);
-//	while (!output.empty()) {
-//		file << output.back() << endl;
-//		output.pop_back();
-//	}
-//	file.close();
-//
-//	return true;
-//}
 
 bool writeFile(vector<RESULT> result, string path, string mode)
 {
@@ -295,6 +285,7 @@ void removeTree(node*& root) {
 	delete root;
 	root = NULL;
 }
+
 bool checkInfix(string infix) {
 	stack<char>s;
 	bool isoperator = 0; //The loop is not for operator, loop for operand
@@ -354,6 +345,7 @@ bool checkInfix(string infix) {
 		return 0;
 	return 1;
 }
+
 int main(int argc, char* argv[])
 {
 	if (argc != 5) {
