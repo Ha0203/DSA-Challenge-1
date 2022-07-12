@@ -6,7 +6,7 @@
 #include <math.h>
 #include <iomanip>
 using namespace std;
-
+//deptraicogisai
 struct node
 {
 	string data;
